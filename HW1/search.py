@@ -124,7 +124,7 @@ def breadthFirstSearch(problem):
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
     "*** YOUR CODE HERE ***"
-	return generalGraphSearch(problem, util.PriorityQueue)
+    return generalGraphSearch(problem, util.PriorityQueue)
 
 def nullHeuristic(state, problem=None):
     """
@@ -136,7 +136,7 @@ def nullHeuristic(state, problem=None):
 def aStarSearch(problem, heuristic=nullHeuristic):
     """Search the node that has the lowest combined cost and heuristic first."""
     "*** YOUR CODE HERE ***"
-	return generalGraphSearch(problem, util.PriorityQueue, heuristic)
+    return generalGraphSearch(problem, util.PriorityQueue, heuristic)
 
 
 # Abbreviations
