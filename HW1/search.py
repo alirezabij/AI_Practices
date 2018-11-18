@@ -72,6 +72,33 @@ def tinyMazeSearch(problem):
     w = Directions.WEST
     return  [s, s, w, s, w, w, s, w]
 
+def generalGraphSearch(problem, structure, heuristic=None):
+    fringe = structure()
+    closed = []
+    path = []
+    cs = problem.getStartState()
+    if structure.__name__ == 'PriorityQueue':
+        fringe.push((cs, []), 0)
+    else:
+        fringe.push((cs, []))
+    while True:
+        cs, path = fringe.pop()
+        if problem.isGoalState(cs):
+            return path
+        if cs not in closed:
+            closed.append(cs)
+            successors = problem.getSuccessors(cs)
+            for successor in successors:
+                newPath = path[:]
+                newPath.append(successor[1])
+                if structure.__name__ == 'PriorityQueue':
+                    if(heuristic != None):
+                        fringe.push((successor[0], newPath), problem.getCostOfActions(newPath) + heuristic(successor[0], problem))
+                    else:
+                        fringe.push((successor[0], newPath), problem.getCostOfActions(newPath))
+                else:
+                    fringe.push((successor[0], newPath))
+
 def depthFirstSearch(problem):
     """
     Search the deepest nodes in the search tree first.
@@ -87,6 +114,7 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
+
     util.raiseNotDefined()
 
 def breadthFirstSearch(problem):
