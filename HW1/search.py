@@ -114,8 +114,7 @@ def depthFirstSearch(problem):
     print "Start's successors:", problem.getSuccessors(problem.getStartState())
     """
     "*** YOUR CODE HERE ***"
-
-    util.raiseNotDefined()
+    return generalGraphSearch(problem, util.Stack)
 
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
